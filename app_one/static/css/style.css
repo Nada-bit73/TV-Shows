@@ -1,0 +1,21 @@
+.container {
+    margin: 5% auto;
+    border-radius: 20px;
+    padding: 50px;
+    border: 2px solid lightgrey;
+  }
+
+
+  label{
+    font-weight: bold;
+    color: black;
+  }
+
+  .back{
+    text-align: right;
+  }
+ 
+  .updateDate{
+    margin-top: 100px;
+  }
+  

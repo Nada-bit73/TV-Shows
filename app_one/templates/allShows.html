@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row  mt-1 center">
+        <div class="span6">
+            <h2 class="form-heading mb-5">All Shows</h2>
+            <table class="table table-striped ml-1">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Network</th>
+                        <th scope="col">Release Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for show in shows %}
+                    <tr>
+                        <th scope="row">{{ show.id }}</th>
+                        <td>{{ show.title }}</td>
+                        <td>{{ show.network }}</td>
+                        <td>{{ show.release_date }}</td>
+                        <td><a href="{% url 'viewShow' show.id %}">Show</a> |
+                            <a href="{% url 'edit' show.id %}">Edit</a> |
+                            <a href="{% url 'delete' show.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="row text-left">
+                <a type="submit" href="shows/new" value="Submit Data">add a new show</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

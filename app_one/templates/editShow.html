@@ -1,0 +1,62 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="mt-1 ml-2">
+    <ul class="messages">    
+        {% for message in messages %}    
+            <p {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</p>    
+        {% endfor %}
+    </ul>
+    <!-- {% if messages %}
+    <ul class="alert alert-danger">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %} -->
+</div>
+
+
+<div class="d-flex justify-content-center align-items-center container ">
+    <div class="row ml-5 center">
+        <div class="span6">
+            <form class="form center mt-1" action="{% url 'update'  show.id %}" method='POST'>
+                <h2 class="form-heading mb-5">Edit Show {{ show.id }}</h2>
+                <div class="row mb-3">
+                    <label class="form-label">Title</label>
+                    <div class="col-12">
+                        <input type="text" name="title" class="form-control" value="{{ show.title }}"
+                            aria-describedby="title" required>
+                    </div>
+                </div>
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <label class="form-label">Network</label>
+                    <div class="col-12">
+                        <input type="text" name="network" class="form-control" aria-describedby="network"
+                            value="{{ show.network }}" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="form-label">Release Date</label>
+                    <div class="col-12">
+                        <input type="text" aria-label="year-month-day" name="releaseDate" class="form-control"
+                            aria-describedby="releaseDate" value="{{ show.release_date|date:'Y-m-d'}}" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="form-label">Description</label>
+                    <div class="col-12">
+                        <input type="text" name="description" class="form-control" aria-describedby="description"
+                            value="{{ show.desc }}" required>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-large btn-dark text-center" type="submit">update</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
